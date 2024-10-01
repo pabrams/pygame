@@ -1,0 +1,28 @@
+{
+    "main_menu": {
+        "title": "Welcome to the Text-Based Game!",
+        "options": [
+            {"key": "1", "text": "Start Game"},
+            {"key": "2", "text": "Load Game"},
+            {"key": "3", "text": "Options"},
+            {"key": "4", "text": "Exit"}
+        ]
+    },
+    "game_loop": {
+        "prompt": "You are in a dark room. What do you want to do?",
+        "options": [
+            {"key": "1", "text": "Look around"},
+            {"key": "2", "text": "Open door"},
+            {"key": "3", "text": "Check inventory"},
+            {"key": "4", "text": "Exit game"}
+        ]
+    },
+    "options_menu": {
+        "title": "Game Options:",
+        "options": [
+            {"key": "1", "text": "Sound: On"},
+            {"key": "2", "text": "Difficulty: Normal"},
+            {"key": "3", "text": "Back to Menu"}
+        ]
+    }
+}

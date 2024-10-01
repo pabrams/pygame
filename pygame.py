@@ -1,16 +1,23 @@
-class Game:
-    def __init__(self):
-        self.running = True
+import json
 
+class Game:
+    def __init__(self, config_file):
+        self.running = True
+        self.load_config(config_file)
+
+    def load_config(self, config_file):
+        with open(config_file, 'r') as file:
+            self.config = json.load(file)
+
+    def display_menu(self, menu):
+        print("\n" + menu.get('title', 'Menu'))
+        for option in menu.get('options', []):
+            print(f"{option['key']}. {option['text']}")
+    
     def main_menu(self):
         while self.running:
-            print("\nWelcome to the Text-Based Game!")
-            print("1. Start Game")
-            print("2. Load Game")
-            print("3. Options")
-            print("4. Exit")
-
-            choice = input("Please choose an option (1-4): ")
+            self.display_menu(self.config['main_menu'])
+            choice = input("Please choose an option: ")
 
             if choice == '1':
                 self.start_game()
@@ -25,7 +32,6 @@ class Game:
 
     def start_game(self):
         print("\nStarting a new game...")
-        # Implement game logic here
         self.game_loop()
 
     def load_game(self):
@@ -34,11 +40,8 @@ class Game:
         pass
 
     def show_options(self):
-        print("\nGame Options:")
-        print("1. Sound: On")
-        print("2. Difficulty: Normal")
-        print("3. Back to Menu")
-        choice = input("Choose an option (1-3): ")
+        self.display_menu(self.config['options_menu'])
+        choice = input("Choose an option: ")
         if choice == '3':
             return
         else:
@@ -50,13 +53,8 @@ class Game:
 
     def game_loop(self):
         while True:
-            print("\nYou are in a dark room. What do you want to do?")
-            print("1. Look around")
-            print("2. Open door")
-            print("3. Check inventory")
-            print("4. Exit game")
-            
-            action = input("Choose an action (1-4): ")
+            self.display_menu(self.config['game_loop'])
+            action = input("Choose an action: ")
 
             if action == '1':
                 print("You see shadows in the corners of the room.")
@@ -71,5 +69,5 @@ class Game:
                 print("Invalid action. Please try again.")
 
 if __name__ == "__main__":
-    game = Game()
+    game = Game('game_config.json')
     game.main_menu()
