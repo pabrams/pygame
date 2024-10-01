@@ -1,4 +1,6 @@
-# ChatGPT Exercise
+# ChatGPT Exercise: build a menu-based text game in python wiht ChatGPT
+
+The second-level headings are my prompts, or questions. to ChatGPT. The contents of each of those headings are the ansewers received from ChatGPT. I created the files it asked for in VS code. 
 
 ## 1. Code a basic framework for a menu-driven text-based game.
 
