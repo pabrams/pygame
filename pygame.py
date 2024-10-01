@@ -3,6 +3,7 @@ import json
 class Game:
     def __init__(self, config_file):
         self.running = True
+        self.current_room = 'room1'  # Starting room
         self.load_config(config_file)
 
     def load_config(self, config_file):
@@ -13,7 +14,7 @@ class Game:
         print("\n" + menu.get('title', 'Menu'))
         for option in menu.get('options', []):
             print(f"{option['key']}. {option['text']}")
-    
+
     def main_menu(self):
         while self.running:
             self.display_menu(self.config['main_menu'])
@@ -53,15 +54,25 @@ class Game:
 
     def game_loop(self):
         while True:
-            self.display_menu(self.config['game_loop'])
+            room = self.config['rooms'][self.current_room]
+            print("\n" + room['description'])
+            self.display_menu(room)
+
             action = input("Choose an action: ")
 
-            if action == '1':
-                print("You see shadows in the corners of the room.")
-            elif action == '2':
-                print("The door creaks open to reveal a bright hallway.")
-            elif action == '3':
-                print("You have no items in your inventory.")
+            next_room = None
+            for option in room['options']:
+                if action == option['key']:
+                    if 'next_room' in option:
+                        next_room = option['next_room']
+                    elif option['text'] == "Look around":
+                        print("You observe your surroundings.")
+                    elif option['text'] == "Check inventory":
+                        print("You have no items in your inventory.")
+                    break
+
+            if next_room:
+                self.current_room = next_room
             elif action == '4':
                 print("Exiting the game...")
                 break

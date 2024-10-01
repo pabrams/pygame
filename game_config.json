@@ -8,14 +8,34 @@
             {"key": "4", "text": "Exit"}
         ]
     },
-    "game_loop": {
-        "prompt": "You are in a dark room. What do you want to do?",
-        "options": [
-            {"key": "1", "text": "Look around"},
-            {"key": "2", "text": "Open door"},
-            {"key": "3", "text": "Check inventory"},
-            {"key": "4", "text": "Exit game"}
-        ]
+    "rooms": {
+        "room1": {
+            "description": "You are in a dark room. There is a door to the north.",
+            "options": [
+                {"key": "1", "text": "Look around"},
+                {"key": "2", "text": "Open door to the north", "next_room": "room2"},
+                {"key": "3", "text": "Check inventory"},
+                {"key": "4", "text": "Exit game"}
+            ]
+        },
+        "room2": {
+            "description": "You are in a bright hallway. There are doors to the south and east.",
+            "options": [
+                {"key": "1", "text": "Look around"},
+                {"key": "2", "text": "Open door to the south", "next_room": "room1"},
+                {"key": "3", "text": "Open door to the east", "next_room": "room3"},
+                {"key": "4", "text": "Exit game"}
+            ]
+        },
+        "room3": {
+            "description": "You find yourself in a library filled with ancient books. There is a door to the west.",
+            "options": [
+                {"key": "1", "text": "Look around"},
+                {"key": "2", "text": "Open door to the west", "next_room": "room2"},
+                {"key": "3", "text": "Check inventory"},
+                {"key": "4", "text": "Exit game"}
+            ]
+        }
     },
     "options_menu": {
         "title": "Game Options:",

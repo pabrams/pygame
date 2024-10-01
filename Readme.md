@@ -47,3 +47,44 @@ Benefits:
     Separation of Concerns: Keeps game logic separate from the presentation layer, making the code cleaner and more maintainable.
 
 You can expand this framework further by adding more complex game logic and additional menus as needed!
+
+## 3. Add a couple more rooms to the game
+
+Sure! Let's expand the game by adding a couple more rooms. Each room will have its own description and actions the player can take. We’ll modify the code to handle multiple rooms and allow the player to navigate between them.
+Updated Configuration File
+
+First, update the game_config.json file to include the new rooms:
+
+(see updated game_config.json)
+
+Next, update the Python game code to handle room navigation:
+
+(see uupdated pygame.py)
+
+Sure! Let's expand the game by adding a couple more rooms. Each room will have its own description and actions the player can take. We’ll modify the code to handle multiple rooms and allow the player to navigate between them.
+
+### Updated Configuration File
+
+First, update the game_config.json file to include the new rooms:
+
+(see updated game_config.json)
+
+### Updated Game Code
+
+Next, update the Python game code to handle room navigation:
+
+#### Explanation of Changes:
+
+    Room Configuration: The game_config.json now includes a rooms section with descriptions and options for each room.
+    Current Room Tracking: The game tracks the player's current room with the self.current_room variable.
+    Dynamic Room Navigation: When the player chooses an option that leads to a new room, the game updates the current room and displays the new room's description and options.
+    Game Loop: The game loop now checks the current room's options and allows navigation based on the player's input.
+
+#### Game Flow:
+
+    Start in "room1" (the dark room).
+    From "room1", you can open the door to "room2" (the bright hallway).
+    From "room2", you can go back to "room1" or enter "room3" (the library).
+    In "room3", you can return to "room2".
+
+Feel free to add more rooms, options, and interactions to expand the game further!
